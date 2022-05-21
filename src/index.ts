@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import '../group.css';
 
 export interface Item {
   name: string;
@@ -103,4 +104,18 @@ export const renderGroup = (item: Item, idx: number, resource?: StringMap, heade
 };
 export function getIconClass(icon?: string): string {
   return !icon || icon.length === 0 ? 'settings' : icon;
+}
+export function buildShownItems(keyword: string, items: Item[]): Item[] {
+  if (!keyword || keyword === '') {
+    return items;
+  }
+  const w = keyword.toLowerCase();
+  const shownItems = items.map(parent => {
+    const parentCopy = Object.assign({}, parent);
+    if (parentCopy.children) {
+      parentCopy.children = parentCopy.children.filter(child => child.name.toLowerCase().includes(w));
+    }
+    return parentCopy;
+  }).filter(item => (item.children && item.children.length > 0) || item.name.toLowerCase().includes(w));
+  return shownItems;
 }
