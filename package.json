@@ -1,6 +1,6 @@
 {
   "name": "react-groups",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "react-groups",
   "main": "./lib/index.js",
   "types": "./src/index.ts",
