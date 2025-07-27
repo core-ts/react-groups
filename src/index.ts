@@ -57,7 +57,7 @@ export const renderGroups = (items: Item[], resource?: StringMap, headerClass?: 
     return renderGroup(form, idx, resource, headerClass, subClass);
   });
 };
-export const renderGroup = (item: Item, idx: number, resource?: StringMap, headerClass?: string, subClass?: string): JSX.Element => {
+export const renderGroup = (item: Item, idx: number, resource?: StringMap, headerClass?: string, subClass?: string): React.JSX.Element => {
   let name = item.name;
   if (resource && item.resource) {
     const text = resource[item.resource];
